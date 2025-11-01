@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oussama - Quran Player</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-background-container">
+        <video id="backgroundVideo" autoplay loop muted playsinline>
+            </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Right Side Action Bar -->
+    <div class="right-action-bar">
+        <button id="actionFavorites" class="action-btn" title="المفضلة فقط"><i class="fas fa-heart"></i></button>
+        <button id="actionHowTo" class="action-btn" title="كيفية الاستخدام"><i class="fas fa-question"></i></button>
+        <button id="actionContact" class="action-btn" title="تواصل معنا"><i class="fas fa-envelope"></i></button>
+    </div>
+
+    <div id="homePage" class="page active">
+        <header>
+            <h1>Quran library </h1>
+            <div class="contact-icon" id="contactIcon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            
+            <!-- Contact Content Section -->
+            <div id="contactContent" class="contact-content">
+                <div class="contact-content-inner">
+                    <button class="close-contact">&times;</button>
+                    <h2>تواصل معنا</h2>
+                    <div class="contact-text">
+                        <p>يمكنك التواصل معنا عبر منصات التواصل الاجتماعي:</p>
+                        <div class="social-links">
+                            <a href="https://t.me/pnqqy" target="_blank" class="social-link telegram">
+                                <i class="fab fa-telegram"></i>
+                                <span>Telegram</span>
+                            </a>
+                            <a href="https://wa.me/213775525723" target="_blank" class="social-link whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="mailto:info@quranapp.com" class="social-link email">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                            <a href="https://www.instagram.com/9g7.x" target="_blank" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCl7sbdme2LGjwEam-11mvrw" target="_blank" class="social-link youtube">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@9g.7x" target="_blank" class="social-link tiktok">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="help-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            
+            <!-- Help Content Section -->
+            <div id="helpContent" class="help-content">
+                <div class="help-content-inner">
+                    <button class="close-help">&times;</button>
+                    <h2>كيفية استخدام الموقع</h2>
+                    <div class="help-text">
+                        <p>مرحبا بكم في موقعنا,موقعنا يوفر لكم استماع للقرآن الكريم وقرائته مع قرائ مختلفين</p>
+                        <ul>
+                            <li>ابحث عن القراء المفضلين لديك في شريط البحث</li>
+                            <li>تتوفر عدة تلاوات وقرائ مختلفين </li>
+                            <li>يمكنك البحث عن الآيات التي تحب</li>
+                            <li>يمكنك إضافة السور المفضلة لديك و ايضا الآيات مفضلة </li>
+                            <li>يمكنك تعيين مؤقت للنوم</li>
+                            <li>يمكنك التحكم في الصوت</li>
+                            <li>يمكنك مشاركة الموقع مع أصدقائك</li>
+                            <li>يمكنك التواصل معنا عبر منصات التواصل الاجتماعي</li>
+                            <li>لا تنسونا بدعائكم و دعاء لإخواننا في غزة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="search-container">
+                <div class="search-input-group">
+                    <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن القران...">
+                    <button id="searchBtn" class="search-btn" title="بحث"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="search-options">
+                    <label class="search-option">
+                        <input type="radio" name="searchType" value="all" checked>
+                        <span>الكل</span>
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="searchType" value="surah">
+                        <span>السورة</span>
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="searchType" value="reader">
+                        <span>القارئ</span>
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="searchType" value="verse">
+                        <span>الآية</span>
+                    </label>
+                </div>
+                <div class="search-options" id="playStartOptions" style="display: none;">
+                    <span class="search-options-label">بداية التشغيل:</span>
+                    <label class="search-option">
+                        <input type="radio" name="playStart" value="verse" checked>
+                        <span>من الآية</span>
+                    </label>
+                    <label class="search-option">
+                        <input type="radio" name="playStart" value="beginning">
+                        <span>بداية السورة</span>
+                    </label>
+                </div>
+            </div>
+            <ul id="songList" class="song-list">
+                <li class="loading-songs">Listen Quran...</li> 
+            </ul>
+        </main>
+    </div>
+
+    <div id="songDetailPage" class="page">
+        <button id="backToHomeFromDetailBtn" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali</button>
+        <div class="song-detail-container">
+            <div class="song-detail-header">
+                <img id="detailAlbumArt" src="https://placehold.co/200x200/3a3a4e/e0e0e0?text=Art" alt="Album Art" class="detail-album-art">
+                <div class="detail-info">
+                    <h2 id="detailTrackTitle">Judul Lagu</h2>
+                    <p id="detailTrackArtist">Nama Artis</p>
+                    <p id="detailTrackSecondArtist" class="second-artist"></p>
+                    <p id="detailAlbumName">Nama Album</p>
+                </div>
+            </div>
+            <div class="detail-controls">
+                <button id="playFromDetailBtn" class="play-from-detail-btn"><i class="fas fa-play-circle"></i> Putar</button>
+                <div class="detail-input-container">
+                    <i class="fas fa-microphone"></i>
+                    <input type="range" id="detailVolumeSlider" class="detail-volume-slider" min="0" max="100" step="1" value="50">
+                    <span id="detailVolumeValue">50</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="playerPage" class="page">
+        <button id="backToHomeBtn" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali</button>
+        <div class="music-player-container">
+            <div class="music-player-box">
+                <div class="player-header">
+                    <img id="albumArt" src="https://placehold.co/100x100/3a3a4e/e0e0e0?text=Art" alt="Album Art" class="album-art-player">
+                    <div class="track-info-player">
+                        <h2 id="playerTrackTitle">Judul Lagu</h2>
+                        <p id="playerTrackArtist">Nama Artis</p>
+                        <p id="playerTrackSecondArtist" class="second-artist"></p>
+                    </div>
+                </div>
+
+                <div id="lyricsContainer" class="lyrics-container">
+                    <p>Lirik akan tampil di sini...</p>
+                </div>
+
+                <div class="player-controls">
+                    <div class="progress-section-player">
+                        <div id="playerProgressBarContainer" class="progress-bar-container-player">
+                            <div id="playerProgressBar" class="progress-bar-player"></div>
+                        </div>
+                        <div class="time-display-player">
+                            <span id="playerCurrentTime">0:00</span>
+                            <span id="playerTotalDuration">0:00</span>
+                        </div> 
+                    </div>
+
+                    <div class="main-controls-player">
+                        <button id="playerPrevBtn" class="control-btn-player" title="السابق"><i class="fas fa-backward-step"></i></button>
+                        <button id="playerBack10Btn" class="control-btn-player small-icon" title="رجوع 10 ثوانٍ"><i class="fas fa-rotate-left"></i></button>
+                        <button id="playerPlayPauseBtn" class="control-btn-player play-pause-player" title="تشغيل/إيقاف"><i class="fas fa-play"></i></button>
+                        <button id="playerForward10Btn" class="control-btn-player small-icon" title="تقديم 10 ثوانٍ"><i class="fas fa-rotate-right"></i></button>
+                        <button id="playerNextBtn" class="control-btn-player" title="التالي"><i class="fas fa-forward-step"></i></button>
+                    </div>
+
+                    <div class="secondary-controls-player">
+                        <button id="playerRepeatBtn" class="control-btn-player small-icon" title="تكرار"><i class="fas fa-repeat"></i></button>
+                        <button id="playerShuffleBtn" class="control-btn-player small-icon" title="عشوائي"><i class="fas fa-shuffle"></i></button>
+                        <div class="volume-control-player">
+                            <button id="volumeToggleBtn" class="control-btn-player small-icon" title="الصوت"><i class="fas fa-volume-high"></i></button>
+                            <div id="volumePopover" class="volume-popover">
+                                <input type="range" id="playerVolumeSlider" class="volume-slider-player volume-slider-vertical" min="0" max="1" step="0.01" value="0.8">
+                            </div>
+                        </div>
+                        <div class="sleep-control-player">
+                            <button id="sleepTimerBtn" class="control-btn-player small-icon" title="مؤقّت إيقاف"><i class="fas fa-moon"></i></button>
+                            <div id="sleepTimerPopover" class="sleep-popover">
+                                <div class="sleep-title">إيقاف بعد:</div>
+                                <div class="sleep-grid">
+                                    <button class="sleep-option" data-min="5">5 دقائق</button>
+                                    <button class="sleep-option" data-min="10">10 دقائق</button>
+                                    <button class="sleep-option" data-min="20">20 دقيقة</button>
+                                </div>
+                                <div class="sleep-custom">
+                                    <input id="sleepCustomMinutes" type="number" min="1" max="600" placeholder="دقائق مخصّصة" aria-label="عدد الدقائق">
+                                    <button id="sleepStartCustomBtn" class="sleep-option">بدء</button>
+                                </div>
+                                <button id="sleepCancelBtn" class="sleep-cancel" disabled>إلغاء المؤقّت</button>
+                                <div id="sleepRemaining" class="sleep-remaining" style="display:none;"></div>
+                            </div>
+                        </div>
+                        <button id="favoriteSurahBtn" class="control-btn-player small-icon" title="سورة مفضلة"><i class="far fa-heart"></i></button>
+                        <button id="addBookmarkBtn" class="control-btn-player small-icon" title="إضافة إشارة"><i class="fas fa-bookmark"></i></button>
+                        <button id="toggleBookmarksBtn" class="control-btn-player small-icon" title="إشاراتي"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+                <!-- Bookmarks panel -->
+                <div id="bookmarksPanel" class="bookmarks-panel" style="display:none;">
+                    <div class="bookmarks-header">
+                        <span>الإشارات</span>
+                        <button id="closeBookmarksBtn" class="control-btn-player small-icon" title="إغلاق"><i class="fas fa-xmark"></i></button>
+                    </div>
+                    <ul id="bookmarksList" class="bookmarks-list"></ul>
+                </div>
+                <p class="footer-credit">code by: @9g7.x </p>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
